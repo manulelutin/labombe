@@ -36,6 +36,6 @@ var jsonTest = {
   "instruction": "challengeStart",
   "challengeType": "Sequence",
   "sequenceList": ["red","green","blue"],
-  "timeLeft": 40
+  "timeLeft": 40,
   "challengeLeft": 10
 }
