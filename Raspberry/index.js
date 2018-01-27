@@ -25,7 +25,7 @@ socketServer.on('connection', function (socket) {
   unityConnection = socket;
   console.log("Connection found");
   isConnected = true;
-  unityConnection.send(JSON.serialize(jsonTest));
+  unityConnection.send(JSON.stringify(jsonTest));
   unityConnection.on('message', function (data) {
     console.log("new phone message", data);
   });
