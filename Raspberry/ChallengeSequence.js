@@ -20,6 +20,8 @@ class ChallengeSequence extends Challenge {
   update(inputs, messager, STOP) {
     var targetKey = this.randomisedSequence[this.sequenceProgress];
     BUTTONS_NAME.forEach(name => {
+
+
       if (inputs.getButtonPressed(name)) {
         if (name === targetKey) {
           this.sequenceProgress++;

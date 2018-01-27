@@ -13,7 +13,7 @@ class ChallengeEngine {
     this.messenger = new Messenger();
     this.messenger.on("startGame", () => this.onStartGame());
     console.log("listening");
-  //  setTimeout(() => this.onStartGame(), 100);
+    setTimeout(() => this.onStartGame(), 100);
   }
   onStartGame() {
     console.log("onStartGame");
@@ -21,7 +21,7 @@ class ChallengeEngine {
   }
   update() {
     //console.log("update");
-    Inputs.update();
+
     //Si le jeu a commencé
     if(this.currentChallenge) {
       var updateResult = this.currentChallenge.update(Inputs, this.messenger, STOP);
@@ -29,6 +29,7 @@ class ChallengeEngine {
         this.startRandomChallenge();
       }
     }
+    Inputs.update();
   }
   startRandomChallenge() {
     this.startChallenge(AvaillableChallenge[Math.floor(Math.random()*AvaillableChallenge.length)])
