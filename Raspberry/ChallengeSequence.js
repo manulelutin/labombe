@@ -19,6 +19,7 @@ class ChallengeSequence extends Challenge {
 
   update(inputs, messager, STOP) {
     var targetKey = this.randomisedSequence[this.sequenceProgress];
+    var isStop =false;
     BUTTONS_NAME.forEach(name => {
 
 
@@ -28,7 +29,8 @@ class ChallengeSequence extends Challenge {
           console.log("sequence progressed to "+this.sequenceProgress)
           if (this.sequenceProgress>=this.randomisedSequence.length) {
             console.log("finished");
-            return STOP;
+            isStop = true;
+
           }
 
         } else {
@@ -38,7 +40,7 @@ class ChallengeSequence extends Challenge {
         }
       }
     })
-
+    return isStop ? STOP : null;
   }
 }
 
