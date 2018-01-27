@@ -10,7 +10,7 @@ app.listen(80);
 
 button.watch(function(err, value) {
   console.log("button value "+value);
-  if (isConnected) {socket.send("button pressed");}
+  if (isConnected) {unityConnection.send("button pressed");}
 });
 
 function handler (req, res) {
