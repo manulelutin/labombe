@@ -20,7 +20,7 @@ class ChallengeSequence extends Challenge {
   update(inputs, messager, STOP) {
     var targetKey = this.randomisedSequence[this.sequenceProgress];
     BUTTONS_NAME.forEach(name => {
-      if (inputs.getButtonDown(name)) {
+      if (inputs.getButtonPressed(name)) {
         if (name === targetKey) {
           this.sequenceProgress++;
           console.log("sequence progressed to "+this.sequenceProgress)
@@ -31,7 +31,7 @@ class ChallengeSequence extends Challenge {
         } else {
           //Play buzzer
           this.sequenceProgress = 0;
-          console.log("sequence back to zero")
+          console.log("sequence back to zero because the player pressed on "+name+" instead of "+target);
         }
       }
     })
