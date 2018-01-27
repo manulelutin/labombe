@@ -25,8 +25,17 @@ socketServer.on('connection', function (socket) {
   unityConnection = socket;
   console.log("Connection found");
   isConnected = true;
-  unityConnection.send('connectionConfirmed');
+  unityConnection.send(JSON.serialize(jsonTest));
   unityConnection.on('message', function (data) {
     console.log("new phone message", data);
   });
 });
+
+
+var jsonTest = {
+  "instruction": "challengeStart",
+  "challengeType": "Sequence",
+  "sequenceList": ["red","green","blue"],
+  "timeLeft": 40
+  "challengeLeft": 10
+}
