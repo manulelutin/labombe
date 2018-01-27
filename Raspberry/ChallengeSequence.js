@@ -27,13 +27,14 @@ class ChallengeSequence extends Challenge {
           this.sequenceProgress++;
           console.log("sequence progressed to "+this.sequenceProgress)
           if (this.sequenceProgress>=this.randomisedSequence.length) {
+            console.log("finished");
             return STOP;
           }
 
         } else {
           //Play buzzer
           this.sequenceProgress = 0;
-          console.log("sequence back to zero because the player pressed on "+name+" instead of "+target);
+          console.log("sequence back to zero because the player pressed on "+name+" instead of "+targetKey);
         }
       }
     })
