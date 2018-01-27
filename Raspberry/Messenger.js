@@ -11,6 +11,7 @@ class Messenger extends EventEmitter {
     this.socketServer = new WebSocket.Server({server: this.app});
     this.socketServer.on('connection', player => {
       this.player = player;
+      console.log("Player detected");
       this.player.on('message', data => {
         var jsonData = JSON.parse(data);
         if (jsonData.instruction) {
@@ -22,7 +23,7 @@ class Messenger extends EventEmitter {
   sendMessage(instruction, params) {
     if (this.player) {
       var json = Object.assign(params, {instruction})
-      this.player.send(json);
+      this.player.send(JSON.stringify(json));
     }
   }
   startChallenge(params) {

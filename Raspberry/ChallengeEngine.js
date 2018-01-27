@@ -1,7 +1,7 @@
 const Messenger = require("./Messenger.js");
 const ChallengeSequence= require("./ChallengeSequence.js");
 var Inputs = require("./Inputs.js");
-const STOP = {stop:"stop"};
+const STOP = "STOP";
 
 var AvaillableChallenge = [
   ChallengeSequence
@@ -13,15 +13,15 @@ class ChallengeEngine {
     this.messenger = new Messenger();
     this.messenger.on("startGame", () => this.onStartGame());
     console.log("listening");
-  //  setTimeout(() => this.onStartGame(), 100);
+    //setTimeout(() => this.onStartGame(), 100);
   }
   onStartGame() {
     console.log("onStartGame");
     this.startRandomChallenge();
   }
   update() {
-    console.log("update");
-    Inputs.update();
+    //console.log("update");
+
     //Si le jeu a commencé
     if(this.currentChallenge) {
       var updateResult = this.currentChallenge.update(Inputs, this.messenger, STOP);
@@ -29,6 +29,7 @@ class ChallengeEngine {
         this.startRandomChallenge();
       }
     }
+    Inputs.update();
   }
   startRandomChallenge() {
     this.startChallenge(AvaillableChallenge[Math.floor(Math.random()*AvaillableChallenge.length)])
