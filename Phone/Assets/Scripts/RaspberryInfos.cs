@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [System.Serializable]
-public class ReaspberryInfos
+public class RaspberryInfos
 {
 	public string instruction;
 	public string challengeType;
@@ -9,8 +9,8 @@ public class ReaspberryInfos
 	public int timeLeft;
 	public int challengeLeft;
 
-	public static ReaspberryInfos CreateFromJSON(string jsonString)
+	public static RaspberryInfos CreateFromJSON(string jsonString)
 	{
-		return JsonUtility.FromJson<ReaspberryInfos>(jsonString);
+		return JsonUtility.FromJson<RaspberryInfos>(jsonString);
 	}
 }
