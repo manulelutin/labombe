@@ -3,9 +3,6 @@ const WebSocket = require('ws');
 var fs = require('fs');
 var Inputs = require("./gpio_input.js");
 
-var button = new Gpio(4, 'in', 'both');
-var isConnected = false;
-
 app.listen(80);
 
 function handler (req, res) {
