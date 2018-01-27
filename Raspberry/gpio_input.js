@@ -1,7 +1,7 @@
 var Gpio = require('onoff').Gpio;
 
 var mappingButton = {
-  "red": 4,
+  "red": 10,
   "green": 17,
   "blue": 27,
   "yellow": 22
