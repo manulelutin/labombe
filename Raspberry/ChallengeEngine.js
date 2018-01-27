@@ -13,7 +13,7 @@ class ChallengeEngine {
     this.messenger = new Messenger();
     this.messenger.on("startGame", () => this.onStartGame());
     console.log("listening");
-    setTimeout(() => this.onStartGame(), 100);
+    //setTimeout(() => this.onStartGame(), 100);
   }
   onStartGame() {
     console.log("onStartGame");
