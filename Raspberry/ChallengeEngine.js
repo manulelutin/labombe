@@ -1,7 +1,7 @@
 const Messenger = require("./Messenger.js");
 const ChallengeSequence= require("./ChallengeSequence.js");
 var Inputs = require("./Inputs.js");
-const STOP = {stop:"stop"};
+const STOP = "STOP";
 
 var AvaillableChallenge = [
   ChallengeSequence
