@@ -18,13 +18,13 @@ function handler (req, res) {
   res.end("Hello world");
 }
 
-var unityConnection = WebSocket.Server({server: app});
+var unityConnection = new WebSocket.Server({server: app});
 
 unityConnection.on('connection', function (socket) {
   console.log("Connection found");
   isConnected = true;
   socket.emit('connectionConfirmed');
-  socket.on('phone message', function (data) {
+  socket.on('message', function (data) {
     console.log("new phone message", data);
   });
 });
