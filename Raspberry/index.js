@@ -1,5 +1,5 @@
 var app = require('http').createServer(handler)
-var io = require('socket.io')(app);
+const WebSocket = require('ws');
 var fs = require('fs');
 var Gpio = require('onoff').Gpio;
 
@@ -18,7 +18,9 @@ function handler (req, res) {
   res.end("Hello world");
 }
 
-io.on('connection', function (socket) {
+var unityConnection = WebSocket.Server({server: app});
+
+unityConnection.on('connection', function (socket) {
   console.log("Connection found");
   isConnected = true;
   socket.emit('connectionConfirmed');
