@@ -20,7 +20,7 @@ class ChallengeEngine {
     this.startRandomChallenge();
   }
   update() {
-    console.log("update");
+    //console.log("update");
     Inputs.update();
     //Si le jeu a commencé
     if(this.currentChallenge) {

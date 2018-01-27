@@ -11,6 +11,7 @@ class Messenger extends EventEmitter {
     this.socketServer = new WebSocket.Server({server: this.app});
     this.socketServer.on('connection', player => {
       this.player = player;
+      console.log("Player detected");
       this.player.on('message', data => {
         var jsonData = JSON.parse(data);
         if (jsonData.instruction) {
