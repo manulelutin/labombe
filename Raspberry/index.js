@@ -1,11 +1,17 @@
 var app = require('http').createServer(handler)
 var io = require('socket.io')(app);
 var fs = require('fs');
-var Gpio = require('onoff').Gpio,
+var Gpio = require('onoff').Gpio;
 
+var button = new Gpio(4, 'in', 'both');
+var isConnected = false;
 
-button = new Gpio(4, 'in', 'both');
 app.listen(80);
+
+button.watch(function(err, value) {
+  console.log("button value "+value);
+  if (isConnected) {socket.emit("button pressed");}
+});
 
 function handler (req, res) {
   res.writeHead(200);
@@ -14,13 +20,9 @@ function handler (req, res) {
 
 io.on('connection', function (socket) {
   console.log("Connection found");
-  button.watch(function(err, value) {
-    console.log("button value "+value);
-    socket.emit("button pressed");
-  });
-  console.log("Connection found");
+  isConnected = true;
   socket.emit('connectionConfirmed');
   socket.on('phone message', function (data) {
-    console.log("new phone message"data);
+    console.log("new phone message", data);
   });
 });
