@@ -10,7 +10,7 @@ app.listen(80);
 
 button.watch(function(err, value) {
   console.log("button value "+value);
-  if (isConnected) {socket.emit("button pressed");}
+  if (isConnected) {socket.send("button pressed");}
 });
 
 function handler (req, res) {
@@ -23,7 +23,7 @@ var unityConnection = new WebSocket.Server({server: app});
 unityConnection.on('connection', function (socket) {
   console.log("Connection found");
   isConnected = true;
-  socket.emit('connectionConfirmed');
+  socket.send('connectionConfirmed');
   socket.on('message', function (data) {
     console.log("new phone message", data);
   });
