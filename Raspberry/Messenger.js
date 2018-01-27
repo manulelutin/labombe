@@ -23,7 +23,7 @@ class Messenger extends EventEmitter {
   sendMessage(instruction, params) {
     if (this.player) {
       var json = Object.assign(params, {instruction})
-      this.player.send(json);
+      this.player.send(JSON.stringify(json));
     }
   }
   startChallenge(params) {
