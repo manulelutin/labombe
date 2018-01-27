@@ -1,10 +1,11 @@
+var Gpio = require('onoff').Gpio;
+
 var mappingButton = {
   "red": 4,
   "green": 17,
   "blue": 27,
   "yellow": 22
 }
-
 
 var keys = {};
 var keysDown = {};
@@ -20,29 +21,38 @@ function getButtonPressed(e) {
 function getButtonReleased(e) {
   return !!keysUp[e];
 }
+function update() {
+  keysDown = {};
+  keysUp = {};
+}
 
-var Input = (() => {
+Object.keys(mappingButton).forEach(key => {
+  button = new Gpio(mappingButton[key], 'in', 'both');
 
-	window.addEventListener("keydown", function (e) {
-		if (!keys[e.keyCode]) {
-			keysDown[e.keyCode] = true;
-		}
-		keys[e.keyCode] = true;
-	});
-	window.addEventListener("keyup", function (e) {
-		keys[e.keyCode] = false;
-		keysUp[e.keyCode] = true;
-	});
-	return {
-		update: function update() {
-			keysDown = {};
-			keysUp = {};
-
-		},
-		//
-		,
-	};
-})();
+  button.watch(function(err, value) {
+    console.log("button "+ key + " value "+value);
+    if (value) {
+      if (!keys[key]) {
+  			keysDown[key] = true;
+  		}
+  		keys[key] = true;
+    }
+    else {
+      keys[key] = false;
+      if (keys[key]) {
+  			 keysUp[key] = true;
+  		}
+    }
+    console.log(JSON.stringify(keys));
+  });
+});
 
 
-forEach
+
+
+module.exports = {
+  getButtonDown,
+  getButtonPressed,
+  getButtonReleased,
+  update: update
+}
