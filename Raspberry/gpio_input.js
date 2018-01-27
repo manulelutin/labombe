@@ -11,7 +11,6 @@ var keys = {};
 var keysDown = {};
 var keysUp = {};
 
-
 function getButtonDown(e) {
   return !!keys[e];
 }
