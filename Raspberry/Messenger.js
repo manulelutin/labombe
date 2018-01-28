@@ -29,6 +29,12 @@ class Messenger extends EventEmitter {
   startChallenge(params) {
     this.sendMessage("challengeStart", params);
   }
+  gameLose() {
+    this.sendMessage("gameLose",{});
+  }
+  gameWin(timeLeft) {
+    this.sendMessage("gameWin",{timeLeft});
+  }
   playSound(soundName) {
     this.sendMessage("playSound", { soundName });
   }

@@ -34,10 +34,7 @@ class ChallengeSequence extends Challenge {
       if(inputs.getButtonPressed(name)) {
           messenger.playSound("ELECTRIC_OFF")
       }
-      if (!isGood && inputs.getButtonPressed(name)) {
 
-        messager.playSoundError();
-      }
       if (inputs.getButtonDown(name) == isGood) {
         return true;
       } else {

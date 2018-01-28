@@ -4,6 +4,8 @@ var Inputs = require("./Inputs.js");
 const SyncTimer = require("./SyncTimer.js");
 const STOP = "STOP";
 
+const CHALLENGE_COUNT = 10;
+
 
 class ChallengeEngine {
   constructor() {
@@ -11,12 +13,15 @@ class ChallengeEngine {
     this.messenger = new Messenger();
     this.messenger.on("startGame", () => this.onStartGame());
     console.log("listening");
-    this.pitime=new SyncTimer(this.messenger);
+
+
     //setTimeout(() => this.onStartGame(), 100);
   }
   onStartGame() {
     console.log("onStartGame");
     this.startRandomChallenge();
+    this.pitime = new SyncTimer(() => this.gameLose());
+    this.challengeCount = CHALLENGE_COUNT;
   }
   update() {
     //console.log("update");
@@ -25,23 +30,44 @@ class ChallengeEngine {
     if(this.currentChallenge) {
       var updateResult = this.currentChallenge.update(Inputs, this.messenger, STOP);
       if (updateResult === STOP) {
-        this.startRandomChallenge();
+        this.stopChallenge();
       }
     }
     Inputs.update();
+  }
+  stopChallenge() {
+    if (this.challengeLeft<0) {
+      this.gameWin();
+    } else {
+      this.startRandomChallenge();
+    }
+
+  }
+  gameWin() {
+    console.log("gameWin")
+    this.pitime.stop();
+    this.currentChallenge = null;
+    this.messenger.gameWin(this.pitime.timeLeft);
+  }
+  gameLose() {
+    console.log("game over");
+    this.pitime.stop();
+    this.currentChallenge = null;
+    this.messenger.gameLose();
   }
   startRandomChallenge() {
     this.startChallenge(Challenges[Math.floor(Math.random()*Challenges.length)])
   }
   startChallenge(Challenge) {
+    this.challengeCount--;
     var challenge = new Challenge();
     var params = challenge.start(Inputs);
     var item = Object.assign(params, {
-      timeLeft: this.pitime.maxtime,
-      challengeLeft: 10,
+      timeLeft: this.pitime.timeLeft(),
+      challengeLeft: this.challengeCount,
     });
     this.messenger.startChallenge(item);
-    console.log("challenge " +item.challengeType+ " started");
+    console.log("challenge " +item.challengeType+ " started. "+this.pitime.timeLeft()+" seconds left.");
     this.currentChallenge = challenge;
   }
 }

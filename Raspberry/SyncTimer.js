@@ -3,18 +3,30 @@
  */
 const Messenger = require("./Messenger.js");
 var pi_gametime=0;
-const maxtime = 100;
+const maxtime = 90;
+
+
 
 class SyncTimer {
-    constructor(messenger) {
-        messenger.on("startGame", () => this.setTimer());
+    constructor(callback) {
+        this.timeStart = Date.now();
+        this.callback = callback
+        this.setTimer()
+    }
+    timeLeft() {
+      var t = (Date.now() - timeStart)/1000;
     }
     setTimer() {
-        pi_gametime = setTimeout(() => this.endTimer(), maxtime);
+        //We're using second so * 1000.
+        pi_gametime = setTimeout(() => this.endTimer(), maxtime * 1000);
         console.log("start challenge pi time");
     }
     endTimer() {
-        console.log("end challenge pi time");
+        this.stop();
+        this.callback();
+    }
+    stop() {
+      clearTimeout(pi_gametime);
     }
 }
 
