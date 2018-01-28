@@ -9,6 +9,7 @@ public class RaspberryInfos
 	public string[] selectedButton;	
 	public string button;	
 	public int count;	
+	public string[] switchState;	
 	public int timeLeft;
 	public int challengeLeft;
     public string soundName;
