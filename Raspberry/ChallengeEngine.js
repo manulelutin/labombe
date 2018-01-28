@@ -1,6 +1,7 @@
 const Messenger = require("./Messenger.js");
 const Challenges = require("./Challenges/");
 var Inputs = require("./Inputs.js");
+const SyncTimer = require("./SyncTimer.js");
 const STOP = "STOP";
 
 
@@ -10,6 +11,7 @@ class ChallengeEngine {
     this.messenger = new Messenger();
     this.messenger.on("startGame", () => this.onStartGame());
     console.log("listening");
+    this.pitime=new SyncTimer(this.messenger);
     //setTimeout(() => this.onStartGame(), 100);
   }
   onStartGame() {
@@ -35,7 +37,7 @@ class ChallengeEngine {
     var challenge = new Challenge();
     var params = challenge.start(inputs);
     var item = Object.assign(params, {
-      timeLeft: 100,
+      timeLeft: this.pitime.maxtime,
       challengeLeft: 10,
     });
     this.messenger.startChallenge(item);
