@@ -2,11 +2,13 @@
 using WebSocketSharp;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class MessageManager : MonoBehaviour
 {
 	InOrderChallenge inOrderChallenge;
 	ChallengeText challengeText;
+	SoundController soundController;
 	List<RaspberryInfos> messagesList = new List<RaspberryInfos>();
 	WebSocket ws;
 
@@ -18,11 +20,13 @@ public class MessageManager : MonoBehaviour
 	public Action onStartGame;
 	public Action onWin;
 	public Action onLose;
+	public Action onRestart;
 
 	void Start ()
 	{
 		inOrderChallenge = FindObjectOfType<InOrderChallenge> ();
 		challengeText = FindObjectOfType<ChallengeText> ();
+		soundController = FindObjectOfType<SoundController> ();
 
 		ws = new WebSocket ("ws://192.168.43.37");
 		ws.OnMessage += (sender, e) =>	(NewMessage(e.Data));
@@ -71,10 +75,15 @@ public class MessageManager : MonoBehaviour
 					onUpdateChallenge (messagesList[0].challengeLeft);
 				
 				break;
-			case "win" :
+			case "gameWin":
+				Win ();
 				break;
-			case "lose" :
+			case "gameLose":
+				Lose ();
 				break;
+//			case "playSound":
+//				soundController.Play ("");
+//				break;
 			default:
 				break;
 			}
@@ -94,11 +103,24 @@ public class MessageManager : MonoBehaviour
 
 	public void Win()
 	{
-		
+
+		if (onWin != null)
+			onWin ();
+		StartCoroutine (WaitRestart ());
 	}
 
 	public void Lose()
 	{
-		
+
+		if (onLose != null)
+			onLose ();
+		StartCoroutine (WaitRestart ());
+	}
+
+	IEnumerator WaitRestart()
+	{
+		yield return new WaitForSeconds (5f);
+		if (onRestart != null)
+			onRestart ();
 	}
 }
