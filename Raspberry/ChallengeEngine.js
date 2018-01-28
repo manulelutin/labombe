@@ -21,7 +21,7 @@ class ChallengeEngine {
     this.pitime = new SyncTimer(() => this.gameLose());
     console.log("onStartGame");
     this.startRandomChallenge();
-    this.challengeCount = CHALLENGE_COUNT;
+    this.challengeLeft = CHALLENGE_COUNT;
   }
   update() {
     //console.log("update");
@@ -59,12 +59,12 @@ class ChallengeEngine {
     this.startChallenge(Challenges[Math.floor(Math.random()*Challenges.length)])
   }
   startChallenge(Challenge) {
-    this.challengeCount--;
+    this.challengeLeft--;
     var challenge = new Challenge();
     var params = challenge.start(Inputs);
     var item = Object.assign(params, {
       timeLeft: this.pitime.timeLeft(),
-      challengeLeft: this.challengeCount,
+      challengeLeft: this.challengeLeft,
     });
     this.messenger.startChallenge(item);
     console.log("challenge " +item.challengeType+ " started. "+this.pitime.timeLeft()+" seconds left.");
