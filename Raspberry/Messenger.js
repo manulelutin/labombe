@@ -33,7 +33,7 @@ class Messenger extends EventEmitter {
     this.sendMessage("playSound", { soundName });
   }
   playSoundError() {
-    this.playSound("error");
+    this.playSound("ERROR");
   }
 }
 
