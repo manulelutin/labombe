@@ -1,0 +1,18 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ChallengeCount.cs">
+    <Files>
+      <File FileName="Assets\Scripts\MessageManager.cs" Line="69" Column="3" />
+      <File FileName="Assets\Scripts\Countdown.cs" Line="26" Column="47" />
+      <File FileName="Assets\Scripts\InOrderChallenge.cs" Line="22" Column="32" />
+      <File FileName="Assets\Scripts\ChallengeText.cs" Line="18" Column="3" />
+      <File FileName="Assets\Scripts\PlayButton.cs" Line="15" Column="36" />
+      <File FileName="Assets\Scripts\ThreeTwoOne.cs" Line="17" Column="36" />
+      <File FileName="Assets\Scripts\ChallengeCount.cs" Line="28" Column="52" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
