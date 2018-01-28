@@ -18,8 +18,10 @@ class ChallengeRepeat extends Challenge {
     }
   }
 
-  update(inputs, messager, STOP) {
+  update(inputs, messenger, STOP) {
+
     if (inputs.getButtonPressed(this.button)) {
+      messenger.playSound("BUTTON");
       this.count--;
       console.log(this.count+" repetition remaining")
     }

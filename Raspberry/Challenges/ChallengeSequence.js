@@ -21,7 +21,7 @@ class ChallengeSequence extends Challenge {
     }
   }
 
-  update(inputs, messager, STOP) {
+  update(inputs, messenger, STOP) {
     var targetKey = this.randomisedSequence[this.sequenceProgress];
     var isStop =false;
     BUTTONS_NAME.forEach(name => {
@@ -30,6 +30,7 @@ class ChallengeSequence extends Challenge {
       if (inputs.getButtonPressed(name)) {
         if (name === targetKey) {
           this.sequenceProgress++;
+          messenger.playSound("BUTTON");
           console.log("sequence progressed to "+this.sequenceProgress)
           if (this.sequenceProgress>=this.randomisedSequence.length) {
             console.log("finished");
@@ -38,8 +39,9 @@ class ChallengeSequence extends Challenge {
           }
 
         } else {
-          //Play buzzer
+          messenger.playSoundError();
           this.sequenceProgress = 0;
+
           console.log("sequence back to zero because the player pressed on "+name+" instead of "+targetKey);
         }
       }

@@ -24,9 +24,13 @@ class ChallengeSequence extends Challenge {
     }
   }
 
-  update(inputs, messager, STOP) {
+  update(inputs, messenger, STOP) {
     var isStop = SWITCHES.every((switchPins, i) => {
+
       var state = getCurrentState(switchPins, inputs);
+      if (state=="up") {messenger.playSound("SWITCH_UP"); }
+      if (state=="off") {messenger.playSound("SWITCH_OFF"); }
+      if (state=="down") {messenger.playSound("SWITCH_DOWN"); }
       if(state == this.switchState[i]) {
         return true;
       }

@@ -14,11 +14,11 @@ class ChallengeAtTheSameTime extends Challenge {
     }
   }
 
-  update(inputs, messager, STOP) {
+  update(inputs, messenger, STOP) {
     var isStop = BUTTONS_NAME.every(name => {
       var isGood = this.selectedButton.indexOf(name) >= 0;
-      if (!isGood && inputs.getButtonPressed(name)) {
-        //messager.playSound("buzzer");
+      if (inputs.getButtonPressed(name)) {
+        messenger.playSound(isGood ? "BUTTON" : "ERROR");
       }
       if (inputs.getButtonDown(name) == isGood) {
         return true;
