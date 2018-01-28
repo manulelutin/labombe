@@ -7,14 +7,11 @@ public class ChallengeCount : MonoBehaviour
 {
 	[SerializeField] Image background;
 	[SerializeField] Text challengeCountText;
-	int challenges = 10;
 
 	void Start () 
 	{
 		MessageManager messageManager = FindObjectOfType<MessageManager> ();
 		messageManager.onStartGame += Show;
-		messageManager.onStartGame += Show;
-		challenges++;
 	}
 
 	void Show()
@@ -22,9 +19,8 @@ public class ChallengeCount : MonoBehaviour
 		background.enabled = true;
 	}
 	
-	void UpdateChallengeCount () 
+	void UpdateChallengeCount (int challengeLeft) 
 	{
-		challenges--;
-		challengeCountText.text = challenges.ToString ();
+		challengeCountText.text = challengeLeft.ToString ();
 	}
 }
