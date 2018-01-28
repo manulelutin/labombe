@@ -3,7 +3,7 @@
  */
 const Messenger = require("./Messenger.js");
 var pi_gametime=0;
-const maxtime = 90;
+const maxtime = 10;
 
 
 
