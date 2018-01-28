@@ -26,7 +26,7 @@ public class RepeatChallenge : MonoBehaviour
 		buttonImage.enabled = true;
 		switch (button) {
 		case "green":
-			buttonImage.color = Color.green;
+			buttonImage.color = Color.white;
 			break;
 		case "blue":
 			buttonImage.color = Color.blue;

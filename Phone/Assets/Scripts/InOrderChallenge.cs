@@ -40,7 +40,7 @@ public class InOrderChallenge : MonoBehaviour
 				circles [i].GetComponent<Image> ().color = Color.yellow;
 				break;
 			case "green":
-				circles [i].GetComponent<Image> ().color = Color.green;
+				circles [i].GetComponent<Image> ().color = Color.white;
 				break;
 			case "blue":
 				circles [i].GetComponent<Image> ().color = Color.blue;

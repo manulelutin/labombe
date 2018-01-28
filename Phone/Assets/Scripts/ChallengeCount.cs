@@ -15,6 +15,7 @@ public class ChallengeCount : MonoBehaviour
 		messageManager.onStartGame += Show;
 		messageManager.onWin += Hide;
 		messageManager.onLose += Hide;
+		messageManager.onUpdateChallenge += UpdateChallengeCount;
 	}
 
 	void Show()
@@ -29,7 +30,7 @@ public class ChallengeCount : MonoBehaviour
 	
 	void UpdateChallengeCount (int challengeLeft) 
 	{
-		challengeCountText.text = challengeLeft.ToString ();
+		challengeCountText.text = (challengeLeft + 1).ToString ();
 		transform.DOPunchScale (Vector3.one * 0.1f, 0.5f, 8, 1);
 	}
 }

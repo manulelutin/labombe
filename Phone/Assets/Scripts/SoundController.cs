@@ -10,6 +10,11 @@ public class SoundController : MonoBehaviour {
     public SoundCue[] cues;
     public AudioSource source;
 
+	void Start()
+	{
+		source = GetComponent<AudioSource> ();
+	}
+
     public void Play(string name) {
         foreach (SoundCue cue in cues) {
             if (cue.name == name) {

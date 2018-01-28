@@ -1,6 +1,7 @@
 ﻿using System;
 using WebSocketSharp;
 using UnityEngine;
+using UnityEngine.Audio;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -12,7 +13,11 @@ public class MessageManager : MonoBehaviour
 	List<RaspberryInfos> messagesList = new List<RaspberryInfos>();
 	WebSocket ws;
 
+	AudioSource challengeSource;
+	[SerializeField] AudioClip challengeClip;
+
 	public Action<int> onUpdateChallenge;
+	public Action<float> onUpdateTime;
 	public Action onNewInstruction;
 	public Action<string[]> onNewSequence;
 	public Action<string[]> onNewAtTheSameTime;
@@ -27,6 +32,7 @@ public class MessageManager : MonoBehaviour
 		inOrderChallenge = FindObjectOfType<InOrderChallenge> ();
 		challengeText = FindObjectOfType<ChallengeText> ();
 		soundController = FindObjectOfType<SoundController> ();
+		challengeSource = FindObjectOfType<AudioSource> ();
 
 		ws = new WebSocket ("ws://192.168.43.37");
 		ws.OnMessage += (sender, e) =>	(NewMessage(e.Data));
@@ -40,6 +46,7 @@ public class MessageManager : MonoBehaviour
 	void NewMessage(string json)
 	{
 		RaspberryInfos infos = RaspberryInfos.CreateFromJSON (json);
+		print (json);
 		messagesList.Add (infos);
 	}
 
@@ -47,46 +54,57 @@ public class MessageManager : MonoBehaviour
 	{
 		for (int i = 0; i < messagesList.Count; i++) 
 		{
-			if (onNewInstruction != null)
-				onNewInstruction ();
 			switch (messagesList[0].instruction) 
 			{
 			case "challengeStart":
+				if (onNewInstruction != null)
+					onNewInstruction ();
 
-				switch (messagesList[0].challengeType) {
+				switch (messagesList [0].challengeType) {
 				case "Sequence":
 					if (onNewSequence != null)
-						onNewSequence (messagesList[0].sequenceList);
+						onNewSequence (messagesList [0].sequenceList);
 					challengeText.UpdateTitle ("In order");
 					break;
 				case "AtTheSameTime":
 					if (onNewAtTheSameTime != null)
-						onNewAtTheSameTime (messagesList[0].selectedButton);
+						onNewAtTheSameTime (messagesList [0].selectedButton);
 					challengeText.UpdateTitle ("At the same time");
 					break;
 				case "Repeat":
 					if (onNewRepeat != null)
-						onNewRepeat (messagesList[0].button, messagesList[0].count);
+						onNewRepeat (messagesList [0].button, messagesList [0].count);
 					challengeText.UpdateTitle ("Repeat !");
+					break;
+				default:
 					break;
 				}
 
-				if (onUpdateChallenge != null)
-					onUpdateChallenge (messagesList[0].challengeLeft);
+				challengeSource.PlayOneShot (challengeClip);
 				
 				break;
 			case "gameWin":
+				if (onNewInstruction != null)
+					onNewInstruction ();
 				Win ();
 				break;
 			case "gameLose":
+				if (onNewInstruction != null)
+					onNewInstruction ();
 				Lose ();
 				break;
-//			case "playSound":
-//				soundController.Play ("");
-//				break;
+			case "playSound":
+				soundController.Play (messagesList[0].soundName);
+				break;
 			default:
 				break;
 			}
+
+			if(messagesList[0].timeLeft != 0f && onUpdateTime != null)
+				onUpdateTime (messagesList [0].timeLeft);
+
+			if(messagesList [0].challengeLeft != 0 && onUpdateChallenge != null)
+				onUpdateChallenge (messagesList [0].challengeLeft);
 
 			messagesList.RemoveAt (0);
 		}
