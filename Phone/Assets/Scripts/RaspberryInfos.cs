@@ -10,6 +10,7 @@ public class RaspberryInfos
 	public string button;	
 	public int count;	
 	public string[] switchState;	
+	public string[][] cablesConnection;	
 	public int timeLeft;
 	public int challengeLeft;
     public string soundName;

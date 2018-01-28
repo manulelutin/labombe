@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\ChallengeCount.cs" />
      <Compile Include="Assets\Scripts\ChallengeMicrophone.cs" />
      <Compile Include="Assets\Scripts\ChallengeText.cs" />
+     <Compile Include="Assets\Scripts\ConnectChallenge.cs" />
      <Compile Include="Assets\Scripts\Countdown.cs" />
      <Compile Include="Assets\Scripts\EndScreen.cs" />
      <Compile Include="Assets\Scripts\InOrderChallenge.cs" />
