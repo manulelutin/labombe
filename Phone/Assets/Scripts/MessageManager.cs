@@ -10,6 +10,7 @@ public class MessageManager : MonoBehaviour
 	InOrderChallenge inOrderChallenge;
 	ChallengeText challengeText;
 	SoundController soundController;
+    Countdown countdown;
 	List<RaspberryInfos> messagesList = new List<RaspberryInfos>();
 	WebSocket ws;
 
@@ -33,8 +34,10 @@ public class MessageManager : MonoBehaviour
 		challengeText = FindObjectOfType<ChallengeText> ();
 		soundController = FindObjectOfType<SoundController> ();
 		challengeSource = FindObjectOfType<AudioSource> ();
+        challengeSource = FindObjectOfType<AudioSource>();
+        countdown =  FindObjectOfType<Countdown>();
 
-		ws = new WebSocket ("ws://192.168.43.37");
+        ws = new WebSocket ("ws://192.168.43.37");
 		ws.OnMessage += (sender, e) =>	(NewMessage(e.Data));
 		ws.OnError += (sender,  i) =>	(print ("Error "));
 		ws.OnOpen += (sender, c) =>	(print ("Open "));
@@ -100,8 +103,11 @@ public class MessageManager : MonoBehaviour
 				break;
 			}
 
-			if(messagesList[0].timeLeft != 0f && onUpdateTime != null)
-				onUpdateTime (messagesList [0].timeLeft);
+			if(messagesList[0].timeLeft != 0f && onUpdateTime != null) {
+                onUpdateTime(messagesList[0].timeLeft);
+                countdown.SyncTime((int)messagesList[0].timeLeft);
+            }
+				
 
 			if(messagesList [0].challengeLeft != 0 && onUpdateChallenge != null)
 				onUpdateChallenge (messagesList [0].challengeLeft);

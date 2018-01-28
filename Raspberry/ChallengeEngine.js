@@ -18,6 +18,9 @@ class ChallengeEngine {
     //setTimeout(() => this.onStartGame(), 100);
   }
   onStartGame() {
+    if (this.pitime) {
+      this.pitime.stop();
+    }
     this.pitime = new SyncTimer(() => this.gameLose());
     console.log("onStartGame");
     this.challengeLeft = CHALLENGE_COUNT;

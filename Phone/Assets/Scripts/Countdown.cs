@@ -17,6 +17,7 @@ public class Countdown : MonoBehaviour
 	AudioSource tickSource;
 	[SerializeField] AudioSource countdownSource;
 
+
 	void Start () 
 	{
 		countdownText = GetComponent<Text> ();
@@ -27,6 +28,7 @@ public class Countdown : MonoBehaviour
 		messageManager.onLose += ClearText;
 
 		time = timeInit;
+
 	}
 
 	void StartCountdown()
@@ -47,7 +49,7 @@ public class Countdown : MonoBehaviour
 
 			if(time > 20)
 			{
-				tickSource.PlayOneShot (tickSound [Random.Range (0, 2)]);
+				tickSource.PlayOneShot (tickSound [time% tickSound.Length]);
 			}
 			else if(time >= 0)
 			{
@@ -61,14 +63,14 @@ public class Countdown : MonoBehaviour
 		}
 	}
 
-	void SyncTime(int newTime)
+	public void SyncTime(int newTime)
 	{
 		if(countdownCor != null)
 		{
 			StopCoroutine (countdownCor);
 			countdownCor = null;
 		}
-		time = time;
+		time = newTime;
 		countdownText.text = time.ToString () + "s";
 		countdownCor = StartCoroutine (TimePass ());
 	}
