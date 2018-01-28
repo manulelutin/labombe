@@ -2,19 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChallengeMicrophone : MonoBehaviour {
+public class MicrophoneChallenge : MonoBehaviour {
 
-    
+    AudioClip microphoneInput;
+    bool microphoneInitialized;
+    public float sensitivity;
+    public bool flapped;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    // Use this for initialization
+    void Start () {
+        //init microphone input
+        if (Microphone.devices.Length > 0) {
+            microphoneInput = Microphone.Start(Microphone.devices[0], true, 999, 44100);
+            microphoneInitialized = true;
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        AudioSource aud = GetComponent<AudioSource>();
-        aud.clip = Microphone.Start("Built-in Microphone", true, 10, 44100);
-        aud.Play();
+        
     }
 }
