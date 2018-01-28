@@ -8,6 +8,7 @@ class ChallengeRepeat extends Challenge {
 
   start() {
     this.count = randomPick(counts);
+    console.log(counts, randomPick(counts))
     this.button = randomPick(BUTTONS_NAME);
     console.log("starting Repeat with "+this.button+" "+this.count+" times");
     return {

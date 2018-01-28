@@ -1,5 +1,5 @@
 const Challenge = require("./Challenge.js");
-const {randomPick, shuffle} = require("./utils.js");
+const {randomPick, shuffle, randomInt} = require("./utils.js");
 
 
 const BUTTONS_NAME = ["cableOrange","cableGrey","cableWhite","cableBlack", "cablePurple"];
@@ -10,25 +10,23 @@ class ChallengeSequence extends Challenge {
   start(inputs) {
     var availablePins = shuffle(BUTTONS_NAME.filter(name => !inputs.getButtonDown(name)));
     var availableInputs = shuffle(INPUTS_NAME);
-    var count = randomInt(1,availableInputs);
+    var count = randomInt(1,Math.min(availableInputs.length, availablePins.length));
 
     this.cablesConnection = [];
     this.selectedButton = [];
     for(var i =0; i<count;i++) {
       this.selectedButton[i] = availablePins[i];
-      this.randomisedSequence[i] = [availableInputs[i], availablePins[i]];
+      this.cablesConnection[i] = [availableInputs[i], availablePins[i]];
     }
-    console.log("starting Connect with "+this.randomisedSequence.join(", "));
+    console.log("starting Connect with "+this.cablesConnection.join(", "));
     return {
       "challengeType": "Connect",
       "cablesConnection": this.cablesConnection,
     }
   }
 
-
-
   update(inputs, messager, STOP) {
-    var isStop = BUTTONS_NAME.all(name => {
+    var isStop = BUTTONS_NAME.every(name => {
       var isGood = this.selectedButton.indexOf(name) >= 0;
       if (!isGood && inputs.getButtonPressed(name)) {
         //messager.playSound("buzzer");

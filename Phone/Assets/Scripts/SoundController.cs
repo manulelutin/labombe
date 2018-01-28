@@ -16,6 +16,6 @@ public class SoundController : MonoBehaviour
       if (cue.name == name) {
         source.PlayOneShot(cue.clip, 1);
       }
-    }
+    } 
   }
 }

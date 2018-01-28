@@ -15,7 +15,7 @@ class ChallengeAtTheSameTime extends Challenge {
   }
 
   update(inputs, messager, STOP) {
-    var isStop = BUTTONS_NAME.all(name => {
+    var isStop = BUTTONS_NAME.every(name => {
       var isGood = this.selectedButton.indexOf(name) >= 0;
       if (!isGood && inputs.getButtonPressed(name)) {
         //messager.playSound("buzzer");

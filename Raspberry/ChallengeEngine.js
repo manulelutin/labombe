@@ -10,7 +10,7 @@ class ChallengeEngine {
     this.messenger = new Messenger();
     this.messenger.on("startGame", () => this.onStartGame());
     console.log("listening");
-    //setTimeout(() => this.onStartGame(), 100);
+    setTimeout(() => this.onStartGame(), 100);
   }
   onStartGame() {
     console.log("onStartGame");
@@ -33,7 +33,7 @@ class ChallengeEngine {
   }
   startChallenge(Challenge) {
     var challenge = new Challenge();
-    var params = challenge.start(inputs);
+    var params = challenge.start(Inputs);
     var item = Object.assign(params, {
       timeLeft: 100,
       challengeLeft: 10,

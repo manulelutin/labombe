@@ -20,9 +20,10 @@ const shuffle = module.exports.shuffle = function (arr) {
 };
 
 const randomInt = module.exports.randomInt = function(min, max) {
-  return Math.floor(Math.random()*(min-max)+min);
+  return Math.floor(Math.random()*(max-min)+min);
 };
 
 const randomPick =  module.exports.randomPick = function (array) {
-  return array(randomInt(0, array.length));
+
+  return array[randomInt(0, array.length)];
 }

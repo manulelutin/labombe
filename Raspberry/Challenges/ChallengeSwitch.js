@@ -1,5 +1,5 @@
 const Challenge = require("./Challenge.js");
-const {randomPick, shuffle} = require("./utils.js");
+const {randomPick, shuffle, randomInt} = require("./utils.js");
 
 
 const SWITCHES = [
@@ -16,11 +16,8 @@ const getCurrentState = (switchPins, inputs) => {
 class ChallengeSequence extends Challenge {
 
   start(inputs) {
-    var availablePins = shuffle(BUTTONS_NAME.filter(name => !inputs.getButtonDown(name)));
-    var availableInputs = shuffle(INPUTS_NAME);
-    var count = randomInt(1,availableInputs);
-
     this.switchState = SWITCHES.map(switchPins => randomPick(POSSIBLE_STATE.filter(state => state != getCurrentState(switchPins, inputs))));
+    console.log("starting Switch with "+this.switchState.join(", "));
     return {
       "challengeType": "Switch",
       "switchState": this.switchState,
@@ -28,7 +25,7 @@ class ChallengeSequence extends Challenge {
   }
 
   update(inputs, messager, STOP) {
-    var isStop = SWITCHES.all((switchPins, i) => {
+    var isStop = SWITCHES.every((switchPins, i) => {
       var state = getCurrentState(switchPins, inputs);
       if(state == this.switchState[i]) {
         return true;
