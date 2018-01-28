@@ -29,6 +29,12 @@ class Messenger extends EventEmitter {
   startChallenge(params) {
     this.sendMessage("challengeStart", params);
   }
+  playSound(soundName) {
+    this.sendMessage("playSound", { soundName });
+  }
+  playSoundError() {
+    this.playSound("error");
+  }
 }
 
 module.exports = Messenger;
