@@ -66,6 +66,7 @@
      <Compile Include="Assets\Scripts\RepeatChallenge.cs" />
      <Compile Include="Assets\Scripts\SoundController.cs" />
      <Compile Include="Assets\Scripts\ThreeTwoOne.cs" />
+     <Compile Include="Assets\Scripts\ToggleChallenge.cs" />
      <Compile Include="Assets\Scripts\UIManager.cs" />
      <None Include="Assets\Demigiant\DOTween\readme.txt" />
      <None Include="Assets\Demigiant\DOTween\DOTween43.xml" />

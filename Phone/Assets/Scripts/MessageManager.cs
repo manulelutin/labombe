@@ -23,6 +23,7 @@ public class MessageManager : MonoBehaviour
 	public Action<string[]> onNewSequence;
 	public Action<string[]> onNewAtTheSameTime;
 	public Action<string, int> onNewRepeat;
+	public Action<string[]> onNewToggle;
 	public Action onStartGame;
 	public Action onWin;
 	public Action onLose;
@@ -78,6 +79,11 @@ public class MessageManager : MonoBehaviour
 					if (onNewRepeat != null)
 						onNewRepeat (messagesList [0].button, messagesList [0].count);
 					challengeText.UpdateTitle ("Repeat !");
+					break;
+				case "Switch":
+					if (onNewToggle != null)
+						onNewToggle (messagesList [0].switchState);
+					challengeText.UpdateTitle ("Toggle");
 					break;
 				default:
 					break;
