@@ -8,6 +8,7 @@ public class RaspberryInfos
 	public string[] sequenceList;
 	public int timeLeft;
 	public int challengeLeft;
+    public string soundName;
 
 	public static RaspberryInfos CreateFromJSON(string jsonString)
 	{
