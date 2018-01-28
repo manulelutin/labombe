@@ -304,6 +304,7 @@
     <Compile Include="Assets\Demigiant\DOTween\Examples\Sequences.cs" />
     <Compile Include="Assets\Scripts\AtTheSameTimeChallenge.cs" />
     <Compile Include="Assets\Scripts\ChallengeCount.cs" />
+    <Compile Include="Assets\Scripts\ChallengeMicrophone.cs" />
     <Compile Include="Assets\Scripts\ChallengeText.cs" />
     <Compile Include="Assets\Scripts\Countdown.cs" />
     <Compile Include="Assets\Scripts\InOrderChallenge.cs" />
