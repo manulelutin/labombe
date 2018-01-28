@@ -10,7 +10,7 @@ class SyncTimer {
         messenger.on("startGame", () => this.setTimer());
     }
     setTimer() {
-        pi_gametime = setTimeout(this.endTimer(), maxtime);
+        pi_gametime = setTimeout(() => this.endTimer(), maxtime);
         console.log("start challenge pi time");
     }
     endTimer() {
