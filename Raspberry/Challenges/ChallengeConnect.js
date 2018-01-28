@@ -2,8 +2,8 @@ const Challenge = require("./Challenge.js");
 const {randomPick, shuffle, randomInt} = require("./utils.js");
 
 
-const BUTTONS_NAME = ["cableOrange","cableGrey","cableWhite","cableBlack", "cablePurple"];
-const INPUTS_NAME = ["cablePink", "cableRed"];
+const BUTTONS_NAME = ["cableOrange","cableWhite","cableBlack", "cablePurple"];
+const INPUTS_NAME = ["cableGrey"];
 
 class ChallengeSequence extends Challenge {
 
