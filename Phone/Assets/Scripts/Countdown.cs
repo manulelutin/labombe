@@ -13,7 +13,10 @@ public class Countdown : MonoBehaviour
 	void Start () 
 	{
 		countdownText = GetComponent<Text> ();
-		FindObjectOfType<MessageManager> ().onStartGame += StartCountdown;
+		MessageManager messageManager = FindObjectOfType<MessageManager> ();
+		messageManager.onStartGame += StartCountdown;
+		messageManager.onWin += ClearText;
+		messageManager.onLose += ClearText;
 	}
 
 	void StartCountdown()
@@ -29,7 +32,14 @@ public class Countdown : MonoBehaviour
 			yield return new WaitForSeconds (1f);
 			time--;
 			transform.DOPunchScale (Vector3.one * 0.2f, 0.2f, 8, 1);
+			time = Mathf.Clamp(time, 0, 3000);
 			countdownText.text = time.ToString () + "s";
 		}
+	}
+
+	void ClearText()
+	{
+		StopCoroutine (countdownCor);
+		countdownText.text = "";
 	}
 }

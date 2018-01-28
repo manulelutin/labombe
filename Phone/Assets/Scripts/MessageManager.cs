@@ -10,8 +10,14 @@ public class MessageManager : MonoBehaviour
 	List<RaspberryInfos> messagesList = new List<RaspberryInfos>();
 	WebSocket ws;
 
-	public Action onNewChallenge;
+	public Action<int> onUpdateChallenge;
+	public Action onNewInstruction;
+	public Action<string[]> onNewSequence;
+	public Action<string[]> onNewAtTheSameTime;
+	public Action<string, int> onNewRepeat;
 	public Action onStartGame;
+	public Action onWin;
+	public Action onLose;
 
 	void Start ()
 	{
@@ -37,15 +43,42 @@ public class MessageManager : MonoBehaviour
 	{
 		for (int i = 0; i < messagesList.Count; i++) 
 		{
-			switch (messagesList[0].challengeType) {
-			case "Sequence":
-				inOrderChallenge.ShowSequence (messagesList [i].sequenceList);
-				challengeText.UpdateTitle ("In order");
+			if (onNewInstruction != null)
+				onNewInstruction ();
+			switch (messagesList[0].instruction) 
+			{
+			case "challengeStart":
+
+				switch (messagesList[0].challengeType) {
+				case "Sequence":
+					if (onNewSequence != null)
+						onNewSequence (messagesList[0].sequenceList);
+					challengeText.UpdateTitle ("In order");
+					break;
+				case "AtTheSameTime":
+					if (onNewAtTheSameTime != null)
+						onNewAtTheSameTime (messagesList[0].selectedButton);
+					challengeText.UpdateTitle ("At the same time");
+					break;
+				case "Repeat":
+					if (onNewRepeat != null)
+						onNewRepeat (messagesList[0].button, messagesList[0].count);
+					challengeText.UpdateTitle ("Repeat !");
+					break;
+				}
+
+				if (onUpdateChallenge != null)
+					onUpdateChallenge (messagesList[0].challengeLeft);
+				
+				break;
+			case "win" :
+				break;
+			case "lose" :
+				break;
+			default:
 				break;
 			}
 
-			if (onNewChallenge != null)
-				onNewChallenge ();
 			messagesList.RemoveAt (0);
 		}
 	}

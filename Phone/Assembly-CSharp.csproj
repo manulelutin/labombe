@@ -53,6 +53,7 @@
   <ItemGroup>
      <Compile Include="Assets\Demigiant\DOTween\Examples\Basics.cs" />
      <Compile Include="Assets\Demigiant\DOTween\Examples\Sequences.cs" />
+     <Compile Include="Assets\Scripts\AtTheSameTimeChallenge.cs" />
      <Compile Include="Assets\Scripts\ChallengeCount.cs" />
      <Compile Include="Assets\Scripts\ChallengeText.cs" />
      <Compile Include="Assets\Scripts\Countdown.cs" />
@@ -60,6 +61,8 @@
      <Compile Include="Assets\Scripts\MessageManager.cs" />
      <Compile Include="Assets\Scripts\PlayButton.cs" />
      <Compile Include="Assets\Scripts\RaspberryInfos.cs" />
+     <Compile Include="Assets\Scripts\RepeatChallenge.cs" />
+     <Compile Include="Assets\Scripts\SoundController.cs" />
      <Compile Include="Assets\Scripts\ThreeTwoOne.cs" />
      <Compile Include="Assets\Scripts\UIManager.cs" />
      <None Include="Assets\Demigiant\DOTween\readme.txt" />

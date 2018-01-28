@@ -10,10 +10,12 @@ public class InOrderChallenge : MonoBehaviour
 
 	void Start()
 	{
-		
+		MessageManager messageManager = FindObjectOfType<MessageManager> ();
+		messageManager.onNewInstruction += Hide;
+		messageManager.onNewSequence += ShowSequence;
 	}
 
-	public void ShowSequence (string[] sequence) 
+	void Hide()
 	{
 		for (int i = 0; i < circles.Length; i++) 
 		{
@@ -21,6 +23,10 @@ public class InOrderChallenge : MonoBehaviour
 			if (arrows [i] != null)
 				arrows [i].SetActive (false);
 		}
+	}
+
+	public void ShowSequence (string[] sequence) 
+	{
 
 		for (int i = 0; i < sequence.Length; i++) 
 		{
