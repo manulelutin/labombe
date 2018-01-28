@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 using DG.Tweening;
 
 public class Countdown : MonoBehaviour 
@@ -9,6 +10,7 @@ public class Countdown : MonoBehaviour
 	[SerializeField] int time = 90;
 	Text countdownText;
 	Coroutine countdownCor;
+	AudioSource countdownSource;
 
 	void Start () 
 	{
