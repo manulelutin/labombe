@@ -43,7 +43,10 @@ public class Countdown : MonoBehaviour
 		{
 			yield return new WaitForSeconds (1f);
 			time--;
-			transform.DOPunchScale (Vector3.one * 0.2f, 0.2f, 8, 1);
+			float punchForce = 0.2f;
+			if (time <= 10)
+				punchForce = 0.3f;
+			transform.DOPunchScale (Vector3.one * punchForce, 0.2f, 8, 1);
 			time = Mathf.Clamp(time, 0, 3000);
 			countdownText.text = time.ToString () + "s";
 
@@ -58,6 +61,7 @@ public class Countdown : MonoBehaviour
 
 			if(time <= 10 && time > 0)
 			{
+				countdownText.color = Color.red;
 				countdownSource.PlayOneShot (countdownSound[time - 1]);
 			}
 		}
@@ -79,6 +83,7 @@ public class Countdown : MonoBehaviour
 	{
 		StopCoroutine (countdownCor);
 		countdownText.text = "";
+		countdownText.color = Color.white;
 		time = timeInit;
 	}
 }

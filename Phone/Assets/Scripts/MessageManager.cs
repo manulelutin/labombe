@@ -24,6 +24,7 @@ public class MessageManager : MonoBehaviour
 	public Action<string[]> onNewAtTheSameTime;
 	public Action<string, int> onNewRepeat;
 	public Action<string[]> onNewToggle;
+	public Action<string[][]> onNewConnect;
 	public Action onStartGame;
 	public Action onWin;
 	public Action onLose;
@@ -84,6 +85,11 @@ public class MessageManager : MonoBehaviour
 					if (onNewToggle != null)
 						onNewToggle (messagesList [0].switchState);
 					challengeText.UpdateTitle ("Toggle");
+					break;
+				case "Connect":
+					if (onNewConnect != null)
+						onNewConnect (messagesList [0].cablesConnection);
+					challengeText.UpdateTitle ("Connect !");
 					break;
 				default:
 					break;
