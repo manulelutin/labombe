@@ -2,7 +2,7 @@ const Challenge = require("./Challenge.js");
 const {randomInt, randomPick} = require("./utils.js");
 
 const BUTTONS_NAME = ["red","green","blue","yellow"];
-const counts = [100, 100, 50, 50, 25];
+const counts = [100, 50, 50, 25, 25, 25, 25];
 
 class ChallengeRepeat extends Challenge {
 

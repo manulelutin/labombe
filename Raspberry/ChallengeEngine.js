@@ -4,7 +4,7 @@ var Inputs = require("./Inputs.js");
 const SyncTimer = require("./SyncTimer.js");
 const STOP = "STOP";
 
-const CHALLENGE_COUNT = 10;
+const CHALLENGE_COUNT = 3;
 
 
 class ChallengeEngine {
