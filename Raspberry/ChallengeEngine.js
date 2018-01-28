@@ -36,7 +36,7 @@ class ChallengeEngine {
     Inputs.update();
   }
   stopChallenge() {
-    if (this.challengeLeft<0) {
+    if (this.challengeLeft<=0) {
       this.gameWin();
     } else {
       this.startRandomChallenge();
