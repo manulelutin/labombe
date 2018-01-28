@@ -14,7 +14,7 @@ class SyncTimer {
         this.setTimer()
     }
     timeLeft() {
-      var t = (Date.now() - timeStart)/1000;
+      var t = (Date.now() - this.timeStart)/1000;
     }
     setTimer() {
         //We're using second so * 1000.
