@@ -18,9 +18,9 @@ class ChallengeEngine {
     //setTimeout(() => this.onStartGame(), 100);
   }
   onStartGame() {
+    this.pitime = new SyncTimer(() => this.gameLose());
     console.log("onStartGame");
     this.startRandomChallenge();
-    this.pitime = new SyncTimer(() => this.gameLose());
     this.challengeCount = CHALLENGE_COUNT;
   }
   update() {
