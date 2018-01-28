@@ -4,7 +4,18 @@ var mappingButton = {
   "red": 10,
   "green": 17,
   "blue": 27,
-  "yellow": 22
+  "yellow": 22,
+  "switch1up": 5,
+  "switch1down": 6,
+  "switch2up": 13,
+  "switch2down": 19,
+  "switch3up": 26,
+  "switch3down": 21,
+  "cableOrange":14,
+  "cableGrey":15,
+  "cableWhite":18,
+  "cableBlack":23,
+  "cablePurple":24
 }
 
 var keys = {};

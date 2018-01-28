@@ -1,11 +1,8 @@
 const Messenger = require("./Messenger.js");
-const ChallengeSequence= require("./ChallengeSequence.js");
+const Challenges = require("./Challenges/");
 var Inputs = require("./Inputs.js");
 const STOP = "STOP";
 
-var AvaillableChallenge = [
-  ChallengeSequence
-];
 
 class ChallengeEngine {
   constructor() {
@@ -32,11 +29,11 @@ class ChallengeEngine {
     Inputs.update();
   }
   startRandomChallenge() {
-    this.startChallenge(AvaillableChallenge[Math.floor(Math.random()*AvaillableChallenge.length)])
+    this.startChallenge(Challenges[Math.floor(Math.random()*Challenges.length)])
   }
   startChallenge(Challenge) {
     var challenge = new Challenge();
-    var params = challenge.start();
+    var params = challenge.start(inputs);
     var item = Object.assign(params, {
       timeLeft: 100,
       challengeLeft: 10,

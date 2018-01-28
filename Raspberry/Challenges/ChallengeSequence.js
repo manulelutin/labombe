@@ -1,13 +1,16 @@
 const Challenge = require("./Challenge.js");
+const {randomInt, randomPick} = require("./utils.js");
 
 const BUTTONS_NAME = ["red","green","blue","yellow"];
+const COUNTS = [3,3,4,4,4,4,5,5,6,7,8]
 
 class ChallengeSequence extends Challenge {
 
   start() {
     this.randomisedSequence = [];
     this.sequenceProgress = 0;
-    for(var i =0; i<3;i++) {
+    var count = randomPick(COUNTS);
+    for(var i =0; i<count;i++) {
       this.randomisedSequence[i] = BUTTONS_NAME[Math.floor(Math.random()*BUTTONS_NAME.length)];
     }
     console.log("starting sequence with "+this.randomisedSequence.join(", "));
