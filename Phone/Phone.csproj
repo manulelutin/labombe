@@ -306,16 +306,17 @@
     <Compile Include="Assets\Scripts\ChallengeCount.cs" />
     <Compile Include="Assets\Scripts\ChallengeMicrophone.cs" />
     <Compile Include="Assets\Scripts\ChallengeText.cs" />
+    <Compile Include="Assets\Scripts\ConnectChallenge.cs" />
     <Compile Include="Assets\Scripts\Countdown.cs" />
     <Compile Include="Assets\Scripts\EndScreen.cs" />
     <Compile Include="Assets\Scripts\InOrderChallenge.cs" />
     <Compile Include="Assets\Scripts\MessageManager.cs" />
-    <Compile Include="Assets\Scripts\NetworkFind.cs" />
     <Compile Include="Assets\Scripts\PlayButton.cs" />
     <Compile Include="Assets\Scripts\RaspberryInfos.cs" />
     <Compile Include="Assets\Scripts\RepeatChallenge.cs" />
     <Compile Include="Assets\Scripts\SoundController.cs" />
     <Compile Include="Assets\Scripts\ThreeTwoOne.cs" />
+    <Compile Include="Assets\Scripts\ToggleChallenge.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,7 @@
 const Challenge = require("./Challenge.js");
 const {randomInt, randomPick} = require("./utils.js");
 
-const BUTTONS_NAME = ["red","green","yellow"];
+const BUTTONS_NAME = ["red","green","yellow", "blue"];
 const COUNTS = [3,3,4,4,4,4,5,5,6,7,8, 9]
 
 class ChallengeSequence extends Challenge {

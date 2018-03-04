@@ -1,6 +1,6 @@
 const Challenge = require("./Challenge.js");
 const {randomInt, shuffle} = require("./utils.js");
-const BUTTONS_NAME = ["red","green","yellow"];
+const BUTTONS_NAME = ["red","green","yellow", "blue"];
 
 class ChallengeAtTheSameTime extends Challenge {
 
