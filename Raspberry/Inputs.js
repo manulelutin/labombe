@@ -40,7 +40,7 @@ Object.keys(mappingButton).forEach(key => {
   button = new Gpio(mappingButton[key], 'in', 'both');
 
   button.watch(function(err, value) {
-    console.log("button "+ key + " value "+value);
+//    console.log("button "+ key + " value "+value);
     if (value) {
       if (!keys[key]) {
   			keysDown[key] = true;

@@ -37,6 +37,8 @@ class ChallengeEngine {
         this.stopChallenge();
       }
     }
+
+    console.log("1 : "+Inputs.getButtonDown("cableGrey")+ " 2 :  " + Inputs.getButtonDown("cablePurple")+ " 3 :  " +  Inputs.getButtonDown("cableBlack")+ " 4 :  " +  Inputs.getButtonDown("cableWhite"));
     Inputs.update();
   }
   stopChallenge() {
