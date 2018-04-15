@@ -27,7 +27,7 @@ class ChallengeSequence extends Challenge {
 
   update(inputs, messenger, STOP) {
 
-    var isStop = BUTTONS_NAME.every(name => {
+    var isStop = BUTTONS_NAME.reduce((old, name) => {
       console.log(name);
       var isGood = this.selectedButton.indexOf(name) >= 0;
       if(inputs.getButtonPressed(name)) {
@@ -39,14 +39,9 @@ class ChallengeSequence extends Challenge {
           console.log("ELECTRIC_OFF");
       }
 
-      if (inputs.getButtonDown(name) == isGood) {
-        console.log("game solved");
-        return true;
-      } else {
-        //console.log("not game solved");
-        return false;
-      }
-    })
+      return old && inputs.getButtonDown(name) == isGood;
+
+    }, true)
     return isStop ? STOP : null;
   }
 }
