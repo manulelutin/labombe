@@ -42,7 +42,7 @@ class ChallengeSequence extends Challenge {
         console.log("game solved");
         return true;
       } else {
-        console.log("not game solved");
+        //console.log("not game solved");
         return false;
       }
     })
