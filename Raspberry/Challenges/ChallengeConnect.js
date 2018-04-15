@@ -39,7 +39,7 @@ class ChallengeSequence extends Challenge {
       }
       if (isGood) {
 
-        console.log(name, isGood, inputs.getButtonDown(name), old);
+        //console.log(name, isGood, inputs.getButtonDown(name), old);
       }
       return old && (inputs.getButtonDown(name) == isGood);
 

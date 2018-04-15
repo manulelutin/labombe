@@ -42,6 +42,7 @@ class ChallengeEngine {
     Inputs.update();
   }
   stopChallenge() {
+    console.log("stop challenge");
     if (this.challengeLeft<=0) {
       this.gameWin();
     } else {
@@ -62,6 +63,7 @@ class ChallengeEngine {
     this.messenger.gameLose();
   }
   startRandomChallenge() {
+    console.log("jdjdddddddddddddddddddd");
     this.startChallenge(Challenges[Math.floor(Math.random()*Challenges.length)])
   }
   startChallenge(Challenge) {
