@@ -12,7 +12,7 @@ var mappingButton = {
   "switch3up": 26,
   "switch3down": 21,
   "cableOrange":3,
-  "cableGrey":15,
+  "cableGrey":25,
   "cableWhite":18,
   "cableBlack":23,
   "cablePurple":24
