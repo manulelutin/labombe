@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InOrderChallenge : MonoBehaviour 
+public class InOrderChallenge : MonoBehaviour
 {
 	[SerializeField] GameObject[] circles;
 	[SerializeField] GameObject[] arrows;
 
-	void Start()
+	void Start ()
 	{
 		MessageManager messageManager = FindObjectOfType<MessageManager> ();
 		messageManager.onNewInstruction += Hide;
 		messageManager.onNewSequence += ShowSequence;
 	}
 
-	void Hide()
+	void Hide ()
 	{
-		for (int i = 0; i < circles.Length; i++) 
+		for (int i = 0; i < circles.Length; i++)
 		{
 			circles [i].SetActive (false);
 			if (arrows [i] != null)
@@ -25,13 +25,13 @@ public class InOrderChallenge : MonoBehaviour
 		}
 	}
 
-	public void ShowSequence (string[] sequence) 
+	public void ShowSequence (string[] sequence)
 	{
 
-		for (int i = 0; i < sequence.Length; i++) 
+		for (int i = 0; i < sequence.Length; i++)
 		{
 			circles [i].SetActive (true);
-			switch (sequence[i]) 
+			switch (sequence [i])
 			{
 			case "red":
 				circles [i].GetComponent<Image> ().color = Color.red;
@@ -40,7 +40,7 @@ public class InOrderChallenge : MonoBehaviour
 				circles [i].GetComponent<Image> ().color = Color.yellow;
 				break;
 			case "green":
-				circles [i].GetComponent<Image> ().color = Color.white;
+				circles [i].GetComponent<Image> ().color = Color.green;
 				break;
 			case "blue":
 				circles [i].GetComponent<Image> ().color = Color.blue;

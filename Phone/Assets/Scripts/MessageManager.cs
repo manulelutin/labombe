@@ -4,14 +4,17 @@ using UnityEngine;
 using UnityEngine.Audio;
 using System.Collections.Generic;
 using System.Collections;
+using System.Net;
+using System.Net.Sockets;
+using UnityEngine.Networking;
 
 public class MessageManager : MonoBehaviour
 {
 	InOrderChallenge inOrderChallenge;
 	ChallengeText challengeText;
 	SoundController soundController;
-    Countdown countdown;
-	List<RaspberryInfos> messagesList = new List<RaspberryInfos>();
+	Countdown countdown;
+	List<RaspberryInfos> messagesList = new List<RaspberryInfos> ();
 	WebSocket ws;
 
 	AudioSource challengeSource;
@@ -30,42 +33,69 @@ public class MessageManager : MonoBehaviour
 	public Action onLose;
 	public Action onRestart;
 
+	public string LocalIPAddress ()
+	{
+		IPHostEntry host;
+		string localIP = "";
+		host = Dns.GetHostEntry (Dns.GetHostName ());
+		print ("GetHostName = " + Dns.GetHostName ());
+		foreach (IPAddress ip in host.AddressList)
+		{
+			print (ip.ToString ());
+			if (ip.AddressFamily == AddressFamily.InterNetwork)
+			{
+				localIP = ip.ToString ();
+				break;
+			}
+		}
+		return localIP;
+	}
+
 	void Start ()
 	{
 		inOrderChallenge = FindObjectOfType<InOrderChallenge> ();
 		challengeText = FindObjectOfType<ChallengeText> ();
 		soundController = FindObjectOfType<SoundController> ();
 		challengeSource = FindObjectOfType<AudioSource> ();
-        challengeSource = FindObjectOfType<AudioSource>();
-        countdown =  FindObjectOfType<Countdown>();
+		challengeSource = FindObjectOfType<AudioSource> ();
+		countdown = FindObjectOfType<Countdown> ();
 
-        ws = new WebSocket ("ws://192.168.43.37");
-		ws.OnMessage += (sender, e) =>	(NewMessage(e.Data));
-		ws.OnError += (sender,  i) =>	(print ("Error "));
+		ws = new WebSocket ("ws://192.168.43.37");
+		print ("local ip = " + LocalIPAddress ());
+//		GetComponent<NetworkDiscovery> ().Initialize ();
+//		GetComponent<NetworkDiscovery> ().StartAsClient ();
+//		GetComponent<NetworkDiscovery> ().OnReceivedBroadcast ("ws://192.168.43.37", );
+		for (int i = 0; i < GetComponent<NetworkDiscovery> ().broadcastsReceived.Keys.Count; i++)
+		{
+			print (GetComponent<NetworkDiscovery> ().broadcastsReceived.Keys);
+		}
+		ws.OnMessage += (sender, e) =>	(NewMessage (e.Data));
+		ws.OnError += (sender, i) =>	(print ("Error "));
 		ws.OnOpen += (sender, c) =>	(print ("Open "));
 		ws.OnClose += (sender, j) =>	(print ("Close "));
 
 		ws.Connect ();
 	}
 
-	void NewMessage(string json)
+	void NewMessage (string json)
 	{
 		RaspberryInfos infos = RaspberryInfos.CreateFromJSON (json);
 		print (json);
 		messagesList.Add (infos);
 	}
 
-	void Update()
+	void Update ()
 	{
-		for (int i = 0; i < messagesList.Count; i++) 
+		for (int i = 0; i < messagesList.Count; i++)
 		{
-			switch (messagesList[0].instruction) 
+			switch (messagesList [0].instruction)
 			{
 			case "challengeStart":
 				if (onNewInstruction != null)
 					onNewInstruction ();
 
-				switch (messagesList [0].challengeType) {
+				switch (messagesList [0].challengeType)
+				{
 				case "Sequence":
 					if (onNewSequence != null)
 						onNewSequence (messagesList [0].sequenceList);
@@ -109,35 +139,36 @@ public class MessageManager : MonoBehaviour
 				Lose ();
 				break;
 			case "playSound":
-				soundController.Play (messagesList[0].soundName);
+				soundController.Play (messagesList [0].soundName);
 				break;
 			default:
 				break;
 			}
 
-			if(messagesList[0].timeLeft != 0f && onUpdateTime != null) {
-                onUpdateTime(messagesList[0].timeLeft);
-                countdown.SyncTime((int)messagesList[0].timeLeft);
-            }
+			if (messagesList [0].timeLeft != 0f && onUpdateTime != null)
+			{
+				onUpdateTime (messagesList [0].timeLeft);
+				countdown.SyncTime ((int)messagesList [0].timeLeft);
+			}
 				
 
-			if(messagesList [0].challengeLeft != 0 && onUpdateChallenge != null)
+			if (messagesList [0].challengeLeft != 0 && onUpdateChallenge != null)
 				onUpdateChallenge (messagesList [0].challengeLeft);
 
 			messagesList.RemoveAt (0);
 		}
 	}
 
-	public void StartGame()
+	public void StartGame ()
 	{
 		if (onStartGame != null)
 			onStartGame ();
 		RaspberryInfos startInfos = new RaspberryInfos ();
 		startInfos.instruction = "startGame";
-		ws.Send (JsonUtility.ToJson(startInfos));
+		ws.Send (JsonUtility.ToJson (startInfos));
 	}
 
-	public void Win()
+	public void Win ()
 	{
 
 		if (onWin != null)
@@ -145,7 +176,7 @@ public class MessageManager : MonoBehaviour
 		StartCoroutine (WaitRestart ());
 	}
 
-	public void Lose()
+	public void Lose ()
 	{
 
 		if (onLose != null)
@@ -153,7 +184,7 @@ public class MessageManager : MonoBehaviour
 		StartCoroutine (WaitRestart ());
 	}
 
-	IEnumerator WaitRestart()
+	IEnumerator WaitRestart ()
 	{
 		yield return new WaitForSeconds (5f);
 		if (onRestart != null)

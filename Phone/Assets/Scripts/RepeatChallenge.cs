@@ -3,30 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RepeatChallenge : MonoBehaviour 
+public class RepeatChallenge : MonoBehaviour
 {
 	[SerializeField] Image buttonImage;
 	[SerializeField] Text countText;
 
-	void Start () 
+	void Start ()
 	{
 		MessageManager messageManager = FindObjectOfType<MessageManager> ();
 		messageManager.onNewInstruction += Hide;
 		messageManager.onNewRepeat += ShowRepeat;
 	}
 	
-	void Hide () 
+	void Hide ()
 	{
 		buttonImage.enabled = false;
 		countText.text = "";
 	}
 
-	void ShowRepeat(string button, int count)
+	void ShowRepeat (string button, int count)
 	{
 		buttonImage.enabled = true;
-		switch (button) {
+		switch (button)
+		{
 		case "green":
-			buttonImage.color = Color.white;
+			buttonImage.color = Color.green;
 			break;
 		case "blue":
 			buttonImage.color = Color.blue;
@@ -39,6 +40,6 @@ public class RepeatChallenge : MonoBehaviour
 			break;
 		}
 
-		countText.text = "x " + count.ToString();
+		countText.text = "x " + count.ToString ();
 	}
 }
