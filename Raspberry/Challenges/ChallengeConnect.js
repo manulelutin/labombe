@@ -28,7 +28,6 @@ class ChallengeSequence extends Challenge {
   update(inputs, messenger, STOP) {
 
     var isStop = BUTTONS_NAME.reduce((old, name) => {
-      console.log(name);
       var isGood = this.selectedButton.indexOf(name) >= 0;
       if(inputs.getButtonPressed(name)) {
           messenger.playSound("ELECTRIC_ON");
@@ -39,9 +38,13 @@ class ChallengeSequence extends Challenge {
           console.log("ELECTRIC_OFF");
       }
 
-      return old && inputs.getButtonDown(name) == isGood;
+      return old && (inputs.getButtonDown(name) == isGood);
 
     }, true)
+
+    if (isStop) {
+      console.log("stop");
+    }
     return isStop ? STOP : null;
   }
 }
