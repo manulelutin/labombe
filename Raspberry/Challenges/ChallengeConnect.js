@@ -34,7 +34,7 @@ class ChallengeSequence extends Challenge {
           console.log("ELECTRIC_ON");
       }
       if(inputs.getButtonPressed(name)) {
-          messenger.playSound("ELECTRIC_OFF").
+          messenger.playSound("ELECTRIC_OFF");
           console.log("ELECTRIC_OFF");
       }
 
