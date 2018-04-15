@@ -26,18 +26,23 @@ class ChallengeSequence extends Challenge {
   }
 
   update(inputs, messenger, STOP) {
+
     var isStop = BUTTONS_NAME.every(name => {
       var isGood = this.selectedButton.indexOf(name) >= 0;
       if(inputs.getButtonPressed(name)) {
-          messenger.playSound("ELECTRIC_ON")
+          messenger.playSound("ELECTRIC_ON");
+          console.log("ELECTRIC_ON");
       }
       if(inputs.getButtonPressed(name)) {
-          messenger.playSound("ELECTRIC_OFF")
+          messenger.playSound("ELECTRIC_OFF").
+          console.log("ELECTRIC_OFF");
       }
 
       if (inputs.getButtonDown(name) == isGood) {
+        console.log("game solved");
         return true;
       } else {
+        console.log("not game solved");
         return false;
       }
     })
