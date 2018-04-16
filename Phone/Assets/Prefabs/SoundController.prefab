@@ -70,54 +70,69 @@ AudioSource:
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
@@ -134,15 +149,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cues:
   - name: ERROR
+    timeout: 0.1
     clip: {fileID: 8300000, guid: 74a116e4e09dfb64d97a69839f663e99, type: 3}
   - name: BUTTON
+    timeout: 0.1
     clip: {fileID: 8300000, guid: 5fde4413899a6be4b86e554c9b7e4121, type: 3}
   - name: ELECTRIC_ON
+    timeout: 0.5
     clip: {fileID: 8300000, guid: 13a1df38595630e4693f4dc28e368550, type: 3}
   - name: ELECTRIC_OFF
+    timeout: 0.5
     clip: {fileID: 8300000, guid: 2bdf0298eb0a8f94f8b3a3e80a07e3cc, type: 3}
   - name: SWITCH_UP
+    timeout: 0.1
     clip: {fileID: 8300000, guid: 7e9a05312544281409b1e7966818f332, type: 3}
   - name: SWITCH_DOWN
+    timeout: 0.1
     clip: {fileID: 8300000, guid: 91278df561d4b1d4fbed93b2c05ff98e, type: 3}
-  source: {fileID: 0}
+  source: {fileID: 82993899773794916}

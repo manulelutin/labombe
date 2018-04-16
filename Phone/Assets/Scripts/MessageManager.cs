@@ -44,6 +44,7 @@ public class MessageManager : MonoBehaviour
 		ws.OnError += (sender,  i) => print ("Error ");
 		ws.OnOpen += (sender, c) =>	print ("Open ");
 		ws.OnClose += (sender, j) => print ("Close "+j.Reason  + "   "+ j.Code);
+        
 
 		ws.Connect ();
 	}
