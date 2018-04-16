@@ -5,9 +5,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6AA025DD-A4DC-1834-39FC-0AF3BB1337E2}</ProjectGuid>
+    <ProjectGuid>{6800202F-4402-D405-F8CB-03DC7BD78B92}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
+    <AssemblyName>UnityEditor.StandardEvents</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
@@ -16,7 +16,7 @@
     </TargetFrameworkProfile>
     <CompilerResponseFile>
     </CompilerResponseFile>
-    <UnityProjectType>GamePlugins:3</UnityProjectType>
+    <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>2018.1.0b12</UnityVersion>
     <RootNamespace>
@@ -226,23 +226,59 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>C:/Program Files/Unity/2018.1.0b12/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>C:/Program Files/Unity/2018.1.0b12/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>C:/Program Files/Unity/2018.1.0b12/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Networking">
+      <HintPath>C:/Program Files/Unity/2018.1.0b12/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Timeline">
       <HintPath>C:/Program Files/Unity/2018.1.0b12/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.Timeline">
+      <HintPath>C:/Program Files/Unity/2018.1.0b12/Editor/Data/UnityExtensions/Unity/Timeline/Editor/UnityEditor.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TreeEditor">
+      <HintPath>C:/Program Files/Unity/2018.1.0b12/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UIAutomation">
       <HintPath>C:/Program Files/Unity/2018.1.0b12/Editor/Data/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UIAutomation">
+      <HintPath>C:/Program Files/Unity/2018.1.0b12/Editor/Data/UnityExtensions/Unity/UIAutomation/Editor/UnityEditor.UIAutomation.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.GoogleAudioSpatializer">
+      <HintPath>C:/Program Files/Unity/2018.1.0b12/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/Editor/UnityEditor.GoogleAudioSpatializer.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.GoogleAudioSpatializer">
       <HintPath>C:/Program Files/Unity/2018.1.0b12/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.HoloLens">
+      <HintPath>C:/Program Files/Unity/2018.1.0b12/Editor/Data/UnityExtensions/Unity/UnityHoloLens/Editor/UnityEditor.HoloLens.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>C:/Program Files/Unity/2018.1.0b12/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.SpatialTracking">
+      <HintPath>C:/Program Files/Unity/2018.1.0b12/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/Editor/UnityEditor.SpatialTracking.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/2018.1.0b12/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.VR">
+      <HintPath>C:/Program Files/Unity/2018.1.0b12/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>C:/Program Files/Unity/2018.1.0b12/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Android.Extensions">
+      <HintPath>C:/Program Files/Unity/2018.1.0b12/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>C:/Program Files/Unity/2018.1.0b12/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
       <HintPath>Assets/Demigiant/DOTween/DOTween.dll</HintPath>
@@ -256,135 +292,63 @@
     <Reference Include="DOTween50">
       <HintPath>Assets/Demigiant/DOTween/DOTween50.dll</HintPath>
     </Reference>
+    <Reference Include="DOTweenEditor">
+      <HintPath>Assets/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Advertisements">
       <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.4/UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Advertisements">
+      <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.4/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.Analytics">
+      <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/Editor/UnityEditor.Analytics.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.purchasing@2.0.1/UnityEngine.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Purchasing">
+      <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.purchasing@2.0.1/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
+    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
+      <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+    </Reference>
     <Reference Include="mscorlib">
-      <HintPath>C:\Program Files\Unity\2018.1.0b12\Editor\Data\MonoBleedingEdge\lib\mono\unity\mscorlib.dll</HintPath>
+      <HintPath>C:\Program Files\Unity\2018.1.0b12\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api\mscorlib.dll</HintPath>
     </Reference>
     <Reference Include="System">
-      <HintPath>C:\Program Files\Unity\2018.1.0b12\Editor\Data\MonoBleedingEdge\lib\mono\unity\System.dll</HintPath>
+      <HintPath>C:\Program Files\Unity\2018.1.0b12\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api\System.dll</HintPath>
     </Reference>
     <Reference Include="System.Core">
-      <HintPath>C:\Program Files\Unity\2018.1.0b12\Editor\Data\MonoBleedingEdge\lib\mono\unity\System.Core.dll</HintPath>
+      <HintPath>C:\Program Files\Unity\2018.1.0b12\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api\System.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization">
-      <HintPath>C:\Program Files\Unity\2018.1.0b12\Editor\Data\MonoBleedingEdge\lib\mono\unity\System.Runtime.Serialization.dll</HintPath>
+      <HintPath>C:\Program Files\Unity\2018.1.0b12\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api\System.Runtime.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml">
-      <HintPath>C:\Program Files\Unity\2018.1.0b12\Editor\Data\MonoBleedingEdge\lib\mono\unity\System.Xml.dll</HintPath>
+      <HintPath>C:\Program Files\Unity\2018.1.0b12\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api\System.Xml.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq">
-      <HintPath>C:\Program Files\Unity\2018.1.0b12\Editor\Data\MonoBleedingEdge\lib\mono\unity\System.Xml.Linq.dll</HintPath>
+      <HintPath>C:\Program Files\Unity\2018.1.0b12\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api\System.Xml.Linq.dll</HintPath>
     </Reference>
     <Reference Include="UnityScript">
-      <HintPath>C:\Program Files\Unity\2018.1.0b12\Editor\Data\MonoBleedingEdge\lib\mono\unity\UnityScript.dll</HintPath>
+      <HintPath>C:\Program Files\Unity\2018.1.0b12\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api\UnityScript.dll</HintPath>
     </Reference>
     <Reference Include="UnityScript.Lang">
-      <HintPath>C:\Program Files\Unity\2018.1.0b12\Editor\Data\MonoBleedingEdge\lib\mono\unity\UnityScript.Lang.dll</HintPath>
+      <HintPath>C:\Program Files\Unity\2018.1.0b12\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api\UnityScript.Lang.dll</HintPath>
     </Reference>
     <Reference Include="Boo.Lang">
-      <HintPath>C:\Program Files\Unity\2018.1.0b12\Editor\Data\MonoBleedingEdge\lib\mono\unity\Boo.Lang.dll</HintPath>
+      <HintPath>C:\Program Files\Unity\2018.1.0b12\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api\Boo.Lang.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="UnityEditor.StandardEvents.csproj">
-      <Project>{6800202F-4402-D405-F8CB-03DC7BD78B92}</Project>
-      <Name>UnityEditor.StandardEvents</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.PackageManagerUI.Editor.csproj">
-      <Project>{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}</Project>
-      <Name>Unity.PackageManagerUI.Editor</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\AssemblyInfo.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\ByteOrder.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\CloseEventArgs.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\CloseStatusCode.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\CompressionMethod.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\ErrorEventArgs.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Ext.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Fin.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\HttpBase.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\HttpRequest.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\HttpResponse.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\LogData.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Logger.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\LogLevel.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Mask.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\MessageEventArgs.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\AuthenticationBase.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\AuthenticationChallenge.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\AuthenticationResponse.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\AuthenticationSchemes.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\Chunk.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\ChunkedRequestStream.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\ChunkStream.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\ClientSslConfiguration.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\Cookie.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\CookieCollection.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\CookieException.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\EndPointListener.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\EndPointManager.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\HttpBasicIdentity.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\HttpConnection.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\HttpDigestIdentity.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\HttpHeaderInfo.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\HttpHeaderType.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\HttpListener.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\HttpListenerAsyncResult.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\HttpListenerContext.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\HttpListenerException.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\HttpListenerPrefix.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\HttpListenerPrefixCollection.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\HttpListenerRequest.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\HttpListenerResponse.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\HttpRequestHeader.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\HttpResponseHeader.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\HttpStatusCode.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\HttpStreamAsyncResult.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\HttpUtility.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\HttpVersion.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\InputChunkState.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\InputState.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\LineState.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\NetworkCredential.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\QueryStringCollection.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\ReadBufferState.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\RequestStream.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\ResponseStream.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\ServerSslConfiguration.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\WebHeaderCollection.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\WebSockets\HttpListenerWebSocketContext.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\WebSockets\TcpListenerWebSocketContext.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Net\WebSockets\WebSocketContext.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Opcode.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\PayloadData.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Rsv.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Server\HttpRequestEventArgs.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Server\HttpServer.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Server\IWebSocketSession.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Server\ServerState.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Server\WebSocketBehavior.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Server\WebSocketServer.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Server\WebSocketServiceHost.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Server\WebSocketServiceHost`1.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Server\WebSocketServiceManager.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\Server\WebSocketSessionManager.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\WebSocket.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\WebSocketException.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\WebSocketFrame.cs" />
-    <Compile Include="Assets\Plugins\WebSocket\websocket-sharp\WebSocketState.cs" />
+    <Compile Include="C:\ProgramData\Unity\cache\packages\packages.unity.com\com.unity.standardevents@1.0.13\Editor\Importer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Demigiant\DOTween\DOTween.XML" />

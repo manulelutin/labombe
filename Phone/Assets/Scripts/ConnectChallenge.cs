@@ -23,10 +23,10 @@ public class ConnectChallenge : MonoBehaviour
 		down.SetActive (false);
 	}
 	
-	void ShowConnect (string[][] connects) 
+	void ShowConnect (string[] connects) 
 	{
 		up.SetActive (true);
-		switch (connects[0][0]) {
+		switch (connects[0]) {
 		case "cablePurple":
 			ins [0].color = new Color (1f, 0.05f, 1f);
 			break;
@@ -43,7 +43,7 @@ public class ConnectChallenge : MonoBehaviour
 			ins [0].color = Color.white;
 			break;
 		}
-		switch (connects[0][1]) {
+		switch (connects[0]) {
 		case "cablePurple":
 			ins [1].color = new Color (1f, 0.05f, 1f);
 			break;
@@ -60,7 +60,7 @@ public class ConnectChallenge : MonoBehaviour
 			ins [1].color = Color.white;
 			break;
 		}
-
+        /*
 		if(connects[1][0] != "")
 		{
 			down.SetActive (true);
@@ -99,5 +99,6 @@ public class ConnectChallenge : MonoBehaviour
 				break;
 			}
 		}
+        */
 	}
 }

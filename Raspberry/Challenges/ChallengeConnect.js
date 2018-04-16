@@ -16,7 +16,7 @@ class ChallengeSequence extends Challenge {
     this.selectedButton = [];
     for(var i =0; i<count;i++) {
       this.selectedButton[i] = availablePins[i];
-      this.cablesConnection[i] = [availableInputs[i], availablePins[i]];
+      this.cablesConnection = [availableInputs[i], availablePins[i]];
     }
     console.log("starting Connect with "+this.cablesConnection.join(", "));
     return {

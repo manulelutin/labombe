@@ -24,7 +24,7 @@ public class MessageManager : MonoBehaviour
 	public Action<string[]> onNewAtTheSameTime;
 	public Action<string, int> onNewRepeat;
 	public Action<string[]> onNewToggle;
-	public Action<string[][]> onNewConnect;
+	public Action<string[]> onNewConnect;
 	public Action onStartGame;
 	public Action onWin;
 	public Action onLose;
@@ -39,11 +39,11 @@ public class MessageManager : MonoBehaviour
         challengeSource = FindObjectOfType<AudioSource>();
         countdown =  FindObjectOfType<Countdown>();
 
-        ws = new WebSocket ("ws://192.168.43.37");
-		ws.OnMessage += (sender, e) =>	(NewMessage(e.Data));
-		ws.OnError += (sender,  i) =>	(print ("Error "));
-		ws.OnOpen += (sender, c) =>	(print ("Open "));
-		ws.OnClose += (sender, j) =>	(print ("Close "));
+        ws = new WebSocket ("ws://192.168.43.141");
+		ws.OnMessage += (sender, e) => NewMessage(e.Data);
+		ws.OnError += (sender,  i) => print ("Error ");
+		ws.OnOpen += (sender, c) =>	print ("Open ");
+		ws.OnClose += (sender, j) => print ("Close "+j.Reason  + "   "+ j.Code);
 
 		ws.Connect ();
 	}
@@ -77,7 +77,7 @@ public class MessageManager : MonoBehaviour
 					challengeText.UpdateTitle ("At the same time");
 					break;
 				case "Repeat":
-					if (onNewRepeat != null)
+					if (onNewRepeat != null)    
 						onNewRepeat (messagesList [0].button, messagesList [0].count);
 					challengeText.UpdateTitle ("Repeat !");
 					break;
