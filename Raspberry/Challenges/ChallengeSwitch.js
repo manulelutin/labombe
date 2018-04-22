@@ -13,6 +13,15 @@ const getCurrentState = (switchPins, inputs) => {
   return inputs.getButtonDown(switchPins[0]) ? "up" : inputs.getButtonDown(switchPins[1]) ? "down" : "off";
 }
 
+
+const getCurrentStateChange = (switchPins, inputs) => {
+  return inputs.getButtonPressed(switchPins[0]) ? "up" : inputs.getButtonPressed(switchPins[1]) ? "down" : "off";
+}
+
+const hasChanged = (switchPins, inputs) => {
+  return inputs.getButtonPressed(switchPins[0]) || inputs.getButtonReleased(switchPins[0]) || inputs.getButtonPressed(switchPins[1]) || inputs.getButtonReleased(switchPins[1]);
+}
+
 class ChallengeSequence extends Challenge {
 
   start(inputs) {
@@ -28,9 +37,17 @@ class ChallengeSequence extends Challenge {
     var isStop = SWITCHES.every((switchPins, i) => {
 
       var state = getCurrentState(switchPins, inputs);
-      if (state=="up") {messenger.playSound("SWITCH_UP"); }
-      if (state=="off") {messenger.playSound("SWITCH_OFF"); }
-      if (state=="down") {messenger.playSound("SWITCH_DOWN"); }
+      var change = getCurrentStateChange(switchPins, inputs);
+      //if (change=="up") { }
+      //if (change=="off") {messenger.playSound("SWITCH_OFF"); }
+      //if (change=="down") {messenger.playSound("SWITCH_DOWN"); }
+      if (hasChanged) {
+        if (state == this.switchState[i]) {
+          messenger.playSound("SWITCH_UP");
+        } else {
+          messenger.playSound("SWITCH_OFF");
+        }
+      }
       if(state == this.switchState[i]) {
         return true;
       }
