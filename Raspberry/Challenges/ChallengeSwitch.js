@@ -34,7 +34,7 @@ class ChallengeSequence extends Challenge {
   }
 
   update(inputs, messenger, STOP) {
-    var isStop = SWITCHES.every((switchPins, i) => {
+    var isStop = SWITCHES.reduce((old, switchPins, i) => {
 
       var state = getCurrentState(switchPins, inputs);
       var change = getCurrentStateChange(switchPins, inputs);
@@ -48,10 +48,8 @@ class ChallengeSequence extends Challenge {
           messenger.playSound("SWITCH_OFF");
         }
       }
-      if(state == this.switchState[i]) {
-        return true;
-      }
-    });
+      return old && (state == this.switchState[i]);
+    }, true);
     return isStop ? STOP : null;
   }
 }
