@@ -41,7 +41,7 @@ class ChallengeSequence extends Challenge {
       //if (change=="up") { }
       //if (change=="off") {messenger.playSound("SWITCH_OFF"); }
       //if (change=="down") {messenger.playSound("SWITCH_DOWN"); }
-      if (hasChanged) {
+      if (hasChanged(switchPins, inputs)) {
         if (state == this.switchState[i]) {
           messenger.playSound("SWITCH_UP");
         } else {
